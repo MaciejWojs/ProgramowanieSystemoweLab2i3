@@ -2,8 +2,6 @@ name: Compile and release
 
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*'
 
@@ -21,7 +19,7 @@ jobs:
           run: |
            for optimazation in 0 1 2 3; do
             for file in *.c; do
-              gcc -o "${file%.c}.out" "$file" -O$optimazation
+              gcc -o "${file%.c}-O$optimazation.out" "$file" -O$optimazation
             done
            done
 

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <unistd.h>
+#include <string.h>
 
 int main(int argc, char* argv[]) {
     if (argc < 3) {
@@ -25,8 +26,7 @@ int main(int argc, char* argv[]) {
             return 1;
         }
     } else {
-
-        int status = write(deskryptor, argv[2], sizeof(argv[2]));
+        int status = write(deskryptor, argv[2], strlen(argv[2]));
         if (status == -1) {
             perror("BLAD: NIE UDALO SIE ZAPISAC DO PLIKU\n");
             return 1;
